@@ -21,3 +21,13 @@ if($_POST["simpan"]){
 	if(!empty($lokfoto)){
 		move_uploaded_file($lokfoto, "foto/$nmfoto");
 	}
+ $sqlm = mysqli_query($kon, "insert into user (iduser, username, password, email, nama, tmplahir, tgllahir, jk, foto, tgldaftar) values ('$_POST[iduser]', '$_POST[username]', '$_POST[password]', '$_POST[email]', '$_POST[nama]', '$_POST[tmplahir]', '$_POST[tgllahir]', '$_POST[jk]', '$nmfoto', NOW())");
+	
+	if($sqlm){
+		echo "Data User berhasil disimpan";
+	}else{
+		echo "Gagal menyimpan";
+	}
+	echo "<META HTTP-EQUIV='Refresh' Content='2; URL=?p=user'>";
+}
+?>
